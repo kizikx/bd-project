@@ -116,17 +116,23 @@ public class GenPosts {
                 for (int i = 0; i < postsIds.size(); i++) {
                     if (postsIds.get(i).equals(parts[0])) {
                         creator = personsIds.get(i);
+                        postsIds.remove(i);
+                        personsIds.remove(i);
+                        break;
                     }
                 }
 
                 JsonArray tags = JsonArray.create();
-                for (int i = 0; i < postsIds2.size(); i++) {
+                for (int i = postsIds2.size() - 1; i >= 0; i--) {
                     if (postsIds2.get(i).equals(parts[0])) {
                         tags.add(tagsIds.get(i));
+                        postsIds2.remove(i);
+                        tagsIds.remove(i);
                     }
                 }
 
                 JsonObject invoiceObject = JsonObject.create()
+                    .put("id", parts[0])
                     .put("createDate", parts[2])
                     .put("location", parts[3])
                     .put("browserUsed", parts[4])

@@ -92,7 +92,7 @@ public class GenPosts {
                 String[] parts = line.split("\\|");
 
                 postsIds2.add(parts[0]);
-                tagsIds.add(parts[0]);
+                tagsIds.add(parts[1]);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
